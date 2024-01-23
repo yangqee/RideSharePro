@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                                 // 在 Firebase 数据库中的 "users" 节点下设置用户信息
                                 database.getReference().child("users").child(user.getUid()).setValue(map);
                                 // 启动第二个活动
-                                Intent intent = new Intent(MainActivity.this, MainFunctionPageActivity.class);
+                                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                                 startActivity(intent);
                             }
                         } else { // 身份验证失败

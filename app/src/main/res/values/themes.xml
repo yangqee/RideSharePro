@@ -6,4 +6,36 @@
     </style>
 
     <style name="Theme.RideSharePro" parent="Base.Theme.RideSharePro" />
+<!--    &lt;!&ndash; Define your styles &ndash;&gt;-->
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--        <item name="colorPrimary">@color/primaryColor</item>-->
+<!--        <item name="colorPrimaryDark">@color/primaryDarkColor</item>-->
+<!--        <item name="colorAccent">@color/primaryLightColor</item>-->
+<!--        <item name="android:textColor">@color/primaryTextColor</item>-->
+<!--        <item name="android:windowBackground">@color/primaryColor</item>-->
+<!--    </style>-->
+
+<!--    <style name="Widget.App.Button" parent="Widget.AppCompat.Button">-->
+<!--        <item name="android:background">@drawable/button_background</item>-->
+<!--        <item name="android:textColor">@color/primaryTextColor</item>-->
+<!--        <item name="android:textSize">18sp</item>-->
+<!--        <item name="android:padding">12dp</item>-->
+<!--        &lt;!&ndash; Ensure this meets the minimum touch target size &ndash;&gt;-->
+<!--    </style>-->
+    <!-- styles.xml -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/blueColor</item>
+        <item name="colorPrimaryDark">@color/blueTextColor</item>
+        <item name="colorAccent">@color/orangeColor</item>
+        <item name="android:textColor">@color/whiteColor</item>
+        <item name="android:windowBackground">@color/blueColor</item>
+    </style>
+
+    <style name="Widget.App.Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/whiteColor</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
 </resources>
