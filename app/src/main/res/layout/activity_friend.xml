@@ -4,48 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VehiclesInfoActivity">
+    tools:context=".friend">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/carRecView"
-        android:layout_width="318dp"
-        android:layout_height="585dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginBottom="54dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="285dp"
-        android:layout_marginBottom="661dp"
-        android:text="Rides:"
-        android:textSize="30sp"
-        android:textStyle="bold"
+    <EditText
+        android:id="@+id/friendID"
+        android:layout_width="298dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="203dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="445dp"
+        android:ems="10"
+        android:hint="Search friend UID"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/back5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="249dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="658dp"
-        android:text="Back"
+        android:id="@+id/search"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="317dp"
+        android:layout_marginEnd="141dp"
+        android:layout_marginBottom="344dp"
+        android:text="Search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/back2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="446dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="237dp"
+        android:text="back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

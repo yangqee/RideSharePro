@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">RideSharePro</string>
     <string name="btngooglelogin">btnGoogleLogin</string>
-    <string name="default_web_client_id">932193634132-feb22h3t134h9mn4smtq7fac77dg1p3b.apps.googleusercontent.com</string>
+<!--    <string name="default_web_client_id">1006669630842-ko44dqbrkmfl82eo6a8k4hg3pqlk21ps.apps.googleusercontent.com</string>-->
+    <string name="default_web_client_id">1:1006669630842:android:ddecbb0b2561b7c1c9dac3</string>
+    <string name="seats_avaliable">Seats Avaliable:</string>
+    <string name="vehicle_model">Vehicle Model</string>
+    <string name="license_plate">License Plate</string>
+    <string name="book_seat">Book Seat</string>
+    <string name="price_per_seat">Price Per Seat</string>
+    <string name="add_vehicle">Add Vehicle</string>
+    <string name="brand">Brand</string>
+    <string-array name="userTypes">
+        <item>Student</item>
+        <item>Parent</item>
+        <item>Alumni</item>
+        <item>Teacher</item>
+    </string-array>
 </resources>
