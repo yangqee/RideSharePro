@@ -13,7 +13,9 @@ public class User {
     private double lat;
     private int mileage;
 
-    private  ArrayList<Vehicle> userRides;
+    private  ArrayList<Vehicle> userRides;;
+    private ArrayList<Vehicle> userCars;;
+
 
     public int getMileage() {
         return mileage;
@@ -30,7 +32,8 @@ public class User {
     public void setMileage(int mileage) {
         this.mileage = mileage;
     }
-
+    public User() {
+    }
     public User(String type, String name, String email, String password, double lon, double lat, int mileage) {
         this.type = type;
         this.name = name;
@@ -39,6 +42,8 @@ public class User {
         this.lon = lon;
         this.lat = lat;
         this.mileage=mileage;
+        this.userRides = new ArrayList<>();  // 设置默认值
+        this.userCars = new ArrayList<>();   // 设置默认值
     }
 
     public double getLon() {
@@ -49,7 +54,6 @@ public class User {
         this.lon = lon;
     }
 
-    private ArrayList<Vehicle> userCars;
 
     public ArrayList<Vehicle> getUserCars() {
         return userCars;

@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
         db.setFirestoreSettings(settings);
 
-//        db.collection("users").document("testuser").set(1);
     }
 
     private void setupGoogleSignIn() {
