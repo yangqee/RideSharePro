@@ -26,6 +26,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
     private Button signIn, signUp, googleAuth;
     private EditText email, name, password;
@@ -188,15 +191,36 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d("Google Sign In", "signInWithCredential:success");
+                        showToast("Google Sign-In successful!"); // 显示登录成功的提示
+
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateUI(user);
+
+                        // 在这里写入用户信息到 Firestore
+                        if (user != null) {
+                            String userId = user.getUid(); // 获取用户 UID
+                            String userEmail = user.getEmail(); // 获取用户 Email
+                            String userName = user.getDisplayName(); // 获取用户姓名
+
+                            // 创建一个包含用户信息的 Map
+                            Map<String, Object> userInfo = new HashMap<>();
+                            userInfo.put("uid", userId);
+                            userInfo.put("email", userEmail);
+                            userInfo.put("name", userName); // 添加用户姓名
+
+                            // 将用户信息写入 Firestore
+                            db.collection("users").document(userId).set(userInfo)
+                                    .addOnSuccessListener(aVoid -> Log.d("Firestore", "User info successfully written!"))
+                                    .addOnFailureListener(e -> Log.w("Firestore", "Error writing user info", e));
+                        }
                     } else {
                         Log.w("Google Sign In", "signInWithCredential:failure", task.getException());
-                        showToast("Authentication failed.");
+                        showToast("Authentication failed."); // 显示登录失败的提示
                         updateUI(null);
                     }
                 });
     }
+
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
