@@ -44,7 +44,8 @@ public class MenuActivity extends AppCompatActivity {
                 DocumentSnapshot snapshot = task.getResult();
                 User x = snapshot.toObject(User.class);
                 String mileage = String.valueOf(x.getMileage());
-                myId.setText("My ID: "+ mAuth.getUid() + "\r\n" + "Mileage: " + mileage);
+                String name = String.valueOf(x.getName());
+                myId.setText("Welecom "+ name + "\n" + "Your Mileage: " + mileage);
 
 
             }
