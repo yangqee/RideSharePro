@@ -34,21 +34,14 @@ public class SignUpActivity extends AppCompatActivity {
     private Spinner roleSpinner;
     private FirebaseFirestore firestore;
     private LinearLayout layout;
-    private String uid;
-    private static int uidGenerator=1;
     private EditText nameField;
     private EditText emailField;
     private EditText passwordField;
-    private EditText priceMultiplierField;
-    private EditText ownedVehiclesField;
-    private ArrayList<String> ownedVehicles;
     private EditText inSchoolTitleField;
     private EditText gradYearField;
     private String roleSelected;
     private EditText childrenUIDsField;
-    private ArrayList<String> childrenUIDs;
     private EditText parentUIDsField;
-    private ArrayList<String> parentUIDs;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +51,6 @@ public class SignUpActivity extends AppCompatActivity {
         layout = findViewById(R.id.createUserLayout);
         roleSpinner = findViewById(R.id.selectedRoleSpinner);
         setupSpinner();
-        uid = "" + uidGenerator;
-        uidGenerator++;
-        ownedVehicles = new ArrayList<>();
     }
 
 
@@ -127,21 +117,12 @@ public class SignUpActivity extends AppCompatActivity {
         passwordField = new EditText(this);
         passwordField.setHint("Password");
         layout.addView(passwordField);
-        priceMultiplierField = new EditText(this);
-        priceMultiplierField.setHint("Price Multiplier");
-        layout.addView(priceMultiplierField);
-        ownedVehiclesField = new EditText(this);
-        ownedVehiclesField.setHint("Number of owned vehicles");
-        layout.addView(ownedVehiclesField);
     }
 
     public void signUp(View V){
         String nameString = nameField.getText().toString();
         String emailString = emailField.getText().toString();
         String passwordString = passwordField.getText().toString();
-        double priceMultiplierDoub = Double.parseDouble(priceMultiplierField.getText().toString());
-        String ownedVehiclesString = ownedVehiclesField.getText().toString();
-        ownedVehicles.add(ownedVehiclesString);
         String roleString = roleSelected;
         String gradYearInt = gradYearField.getText().toString();
 
@@ -150,7 +131,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Log.d("SIGN UP", "Successfully signed up");
-
+                    Toast.makeText(SignUpActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                     if(roleSelected.equals("Alumni")) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         Alumni newUser = new Alumni(roleString, nameString, emailString, passwordString, 0, 0, 0, gradYearInt);
@@ -168,8 +149,15 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                     if(roleSelected.equals("Parent")) {
                         FirebaseUser user = mAuth.getCurrentUser();
-
                         String childrenUIDsString = childrenUIDsField.getText().toString();
+
+                        ArrayList<String> childrenUIDs = new ArrayList<>();
+
+                        // 假设子用户ID是以逗号分隔的，分割字符串并添加到列表中
+                        String[] ids = childrenUIDsString.split(",");
+                        for (String id : ids) {
+                            childrenUIDs.add(id.trim()); // 添加到列表中，并去除可能的空格
+                        }
                         Parent newUser = new Parent(roleString, nameString, emailString, passwordString, 0, 0, 0, childrenUIDs);
                         firestore.collection("users").document(user.getUid()).set(newUser);
                         updateUI(user);
@@ -179,6 +167,13 @@ public class SignUpActivity extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
 
                         String parentUIDsString = parentUIDsField.getText().toString();
+                        ArrayList<String> parentUIDs = new ArrayList<>();
+
+                        // 分割字符串并添加到列表中
+                        String[] ids = parentUIDsString.split(",");
+                        for (String id : ids) {
+                            parentUIDs.add(id.trim()); // 添加到列表中，并去除可能的空格
+                        }
                         Student newUser = new Student(roleString, nameString, emailString, passwordString, 0, 0, 0, gradYearInt, parentUIDs);
                         firestore.collection("users").document(user.getUid()).set(newUser);
                         updateUI(user);
