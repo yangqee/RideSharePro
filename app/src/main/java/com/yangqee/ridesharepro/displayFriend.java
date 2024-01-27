@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.yangqee.ridesharepro.Base.User;
-import com.yangqee.ridesharepro.Base.Vehicle;
+import com.yangqee.ridesharepro.BaseClasses.User;
+import com.yangqee.ridesharepro.BaseClasses.Vehicle;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

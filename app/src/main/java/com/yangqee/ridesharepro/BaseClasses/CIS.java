@@ -1,4 +1,4 @@
-package com.yangqee.ridesharepro.Base;
+package com.yangqee.ridesharepro.BaseClasses;
 
 public class CIS {
     private static double lat = 22.283869355812197;

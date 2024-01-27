@@ -1,4 +1,4 @@
-package com.yangqee.ridesharepro.Base;
+package com.yangqee.ridesharepro.BaseClasses;
 
 public class Vehicle {
 

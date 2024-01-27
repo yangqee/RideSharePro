@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.yangqee.ridesharepro.Base.Vehicle;
+import com.yangqee.ridesharepro.BaseClasses.Vehicle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

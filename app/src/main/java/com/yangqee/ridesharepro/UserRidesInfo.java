@@ -16,8 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.yangqee.ridesharepro.Base.User;
-import com.yangqee.ridesharepro.Base.Vehicle;
+import com.yangqee.ridesharepro.BaseClasses.User;
+import com.yangqee.ridesharepro.BaseClasses.Vehicle;
 import com.yangqee.ridesharepro.otherRec.myCarAdapter;
 import com.yangqee.ridesharepro.otherRec.myRideAdapter;
 

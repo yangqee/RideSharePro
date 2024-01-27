@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.yangqee.ridesharepro.Base.Vehicle;
+import com.yangqee.ridesharepro.BaseClasses.Vehicle;
 import com.yangqee.ridesharepro.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;

@@ -1,8 +1,5 @@
 package com.yangqee.ridesharepro;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,23 +18,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
-import com.yangqee.ridesharepro.Base.User;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private Button signIn, signUp, googleAuth;
@@ -143,37 +129,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void performSignUp() {
-        String userName = name.getText().toString();
-        String userEmail = email.getText().toString();
-        String userPassword = password.getText().toString();
-        String userTypeData = userType.getSelectedItem().toString();
-
-        if (userEmail.isEmpty() || userName.isEmpty() || userPassword.isEmpty() || userTypeData.isEmpty()) {
-            showToast("Please fill in all required fields.");
-            return;
-        }
-
-        if (!userEmail.contains("cis.edu.hk")) {
-            showToast("Email does not belong to our school organization.");
-            return;
-        }
-
-        mAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, task -> {
-            Exception exception = task.getException();
-            Log.w("Sign up", "createUserWithEmail:failure", exception);
-                    if (task.isSuccessful()) {
-                        Log.d("SIGN UP", "createUserWithEmail:success");
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        User newUser = new User(userTypeData, userName, userEmail, userPassword, 0, 0, 0);
-                        db.collection("users").document(user.getUid()).set(newUser);
-                        updateUI(user);
-                    } else {
-                        Log.w("Sign up", "createUserWithEmail:failure", task.getException());
-                        showToast("Authentication failed.");
-                        updateUI(null);
-                    }
-                }
-                );
+//        String userName = name.getText().toString();
+//        String userEmail = email.getText().toString();
+//        String userPassword = password.getText().toString();
+//        String userTypeData = userType.getSelectedItem().toString();
+//
+//        if (userEmail.isEmpty() || userName.isEmpty() || userPassword.isEmpty() || userTypeData.isEmpty()) {
+//            showToast("Please fill in all required fields.");
+//            return;
+//        }
+//
+//        if (!userEmail.contains("cis.edu.hk")) {
+//            showToast("Email does not belong to our school organization.");
+//            return;
+//        }
+//
+//        mAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, task -> {
+//            Exception exception = task.getException();
+//            Log.w("Sign up", "createUserWithEmail:failure", exception);
+//                    if (task.isSuccessful()) {
+//                        Log.d("SIGN UP", "createUserWithEmail:success");
+//                        FirebaseUser user = mAuth.getCurrentUser();
+//                        User newUser = new User(userTypeData, userName, userEmail, userPassword, 0, 0, 0);
+//                        db.collection("users").document(user.getUid()).set(newUser);
+//                        updateUI(user);
+//                    } else {
+//                        Log.w("Sign up", "createUserWithEmail:failure", task.getException());
+//                        showToast("Authentication failed.");
+//                        updateUI(null);
+//                    }
+//                }
+//                );
+        Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+        startActivity(intent);
     }
 
     private void showToast(String message) {

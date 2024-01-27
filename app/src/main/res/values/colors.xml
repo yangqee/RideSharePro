@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="words">#3c096c</color>
+
 
     <!-- Define your colors -->
     <color name="primaryColor">#fbfaff</color>
