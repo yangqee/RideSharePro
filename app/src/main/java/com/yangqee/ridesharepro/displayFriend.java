@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.QuerySnapshot;
 import com.yangqee.ridesharepro.BaseClasses.User;
 import com.yangqee.ridesharepro.BaseClasses.Vehicle;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,26 +43,50 @@ public class displayFriend extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         friendID = getIntent().getStringExtra("cleanName");
-
+//
+//        try {
+//            db.collection("users").document(friendID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//                @Override
+//                public void onComplete(@androidx.annotation.NonNull Task<DocumentSnapshot> task) {
+//                    DocumentSnapshot snapshot = task.getResult();
+//                    User x = snapshot.toObject(User.class);
+//                    friendName.setText(x.getName()+ " user's rides:");
+//                    ArrayList<Vehicle> allFriendRides = x.getUserRides();
+//                    if(allFriendRides != null){
+//                        CISVehicleAdapter display = new CISVehicleAdapter(allFriendRides);
+//                        displayFriendRides.setAdapter(display);
+//                        displayFriendRides.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+//                    }else {
+//                        friendName.setText(x.getName()+ " does not have any rides");
+//                    }
+//
+//                }
+//            });
+//        }catch (Exception exception){
+//            System.out.println(exception);
+//        }
         try {
-            db.collection("users").document(friendID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@androidx.annotation.NonNull Task<DocumentSnapshot> task) {
-                    DocumentSnapshot snapshot = task.getResult();
-                    User x = snapshot.toObject(User.class);
-                    friendName.setText(x.getName()+ " user's rides:");
-                    ArrayList<Vehicle> allFriendRides = x.getUserRides();
-                    if(allFriendRides != null){
-                        CISVehicleAdapter display = new CISVehicleAdapter(allFriendRides);
-                        displayFriendRides.setAdapter(display);
-                        displayFriendRides.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-                    }else {
-                        friendName.setText(x.getName()+ " does not have any rides");
+            db.collection("users").whereEqualTo("name", friendID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            User x = document.toObject(User.class);
+                            friendName.setText(x.getName() + " user's rides:");
+                            ArrayList<Vehicle> allFriendRides = x.getUserRides();
+                            if (allFriendRides != null) {
+                                CISVehicleAdapter display = new CISVehicleAdapter(allFriendRides);
+                                displayFriendRides.setAdapter(display);
+                                displayFriendRides.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+                            } else {
+                                friendName.setText(x.getName() + " does not have any rides");
+                            }
+                        }
+                    } else {
+                        // 处理查询失败的情况
                     }
-
                 }
             });
-        }catch (Exception exception){
+        } catch (Exception exception) {
             System.out.println(exception);
         }
 

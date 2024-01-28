@@ -1,4 +1,4 @@
-package com.yangqee.ridesharepro.otherRec;
+package com.yangqee.ridesharepro.Adapter;
 
 import android.view.View;
 import android.widget.TextView;

@@ -2,7 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="words">#3c096c</color>
+    <color name="words">#6550a0</color>
+    <color name="orange">#FE6900</color>
+
 
 
     <!-- Define your colors -->

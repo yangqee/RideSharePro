@@ -22,6 +22,7 @@ public class MenuActivity extends AppCompatActivity {
     private Button myRides;
     private Button signOut;
     private TextView myId;
+    private TextView mileageText;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
@@ -35,7 +36,8 @@ public class MenuActivity extends AppCompatActivity {
         myRides = (Button) this.findViewById(R.id.rides);
         signOut = (Button) this.findViewById(R.id.signOut);
         db = FirebaseFirestore.getInstance();
-        myId = this.findViewById(R.id.myId);
+        myId = this.findViewById(R.id.textView5);
+        mileageText = this.findViewById(R.id.textViewMileageText);
         mAuth = FirebaseAuth.getInstance();
         db.collection("users").document(mAuth.getUid()).get();
         db.collection("users").document(mAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -45,7 +47,8 @@ public class MenuActivity extends AppCompatActivity {
                 User x = snapshot.toObject(User.class);
                 String mileage = String.valueOf(x.getMileage());
                 String name = String.valueOf(x.getName());
-                myId.setText("Welecom "+ name + "\n" + "Your Mileage: " + mileage);
+                myId.setText(name);
+                mileageText.setText("Your Mileage: " + mileage);
 
 
             }

@@ -43,6 +43,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText childrenUIDsField;
     private EditText parentUIDsField;
 
+    private Button back;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
@@ -50,7 +52,17 @@ public class SignUpActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         layout = findViewById(R.id.createUserLayout);
         roleSpinner = findViewById(R.id.selectedRoleSpinner);
+        back = this.findViewById(R.id.back);
+
         setupSpinner();
+
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(SignUpActivity.this,MenuActivity.class);
+                startActivity(i);
+
+            }
+        });
     }
 
 
