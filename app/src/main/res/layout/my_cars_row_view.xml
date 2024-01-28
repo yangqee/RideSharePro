@@ -8,8 +8,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="348dp"
         android:layout_height="135dp"
-        android:background="#FDEEEE"
-        tools:layout_editor_absoluteX="42dp">
+        android:background="#ecf8f8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/vehicleBrand"
@@ -19,9 +20,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="248dp"
             android:layout_marginBottom="95dp"
-            android:textColor="@color/words"
-
             android:text="ItemName"
+
+            android:textColor="@color/words"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -67,6 +68,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="44dp"
             android:layout_marginBottom="74dp"
+            android:backgroundTint="@color/blueColor"
             android:text="Close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg5"
     tools:context=".MenuActivity">
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -13,7 +15,9 @@
         android:layout_height="283dp"
         android:background="@drawable/pic3"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="-1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -131,7 +135,6 @@
 
     </LinearLayout>
 
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -147,10 +150,12 @@
 
     <Button
         android:id="@+id/addCar"
-        android:layout_width="102dp"
+        android:layout_width="110dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="312dp"
+
+        style="@style/Widget.App.Button"
         android:background="@drawable/menu_button_background"
         android:text="Register Vehicle"
         app:layout_constraintStart_toStartOf="parent"
@@ -158,10 +163,12 @@
 
     <Button
         android:id="@+id/rides"
-        android:layout_width="100dp"
+        style="@style/Widget.App.Button"
+        android:layout_width="110dp"
         android:layout_height="100dp"
-        android:layout_marginStart="248dp"
+        android:layout_marginStart="270dp"
         android:layout_marginTop="312dp"
+
         android:background="@drawable/menu_button_background"
         android:text="My Trips"
         app:layout_constraintStart_toStartOf="parent"
@@ -169,34 +176,40 @@
 
     <Button
         android:id="@+id/friend"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="460dp"
         android:background="@drawable/menu_button_background"
         android:text="Friend's Carpool"
+        style="@style/Widget.App.Button"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/More"
-        android:layout_width="100dp"
+        style="@style/Widget.App.Button"
+        android:layout_width="110dp"
         android:layout_height="100dp"
-        android:layout_marginStart="132dp"
+        android:layout_marginStart="145dp"
         android:layout_marginTop="460dp"
         android:background="@drawable/menu_button_background"
         android:text="More Options"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/joinRide"
-        android:layout_width="100dp"
+        style="@style/Widget.App.Button"
+        android:layout_width="110dp"
         android:layout_height="100dp"
-        android:layout_marginStart="132dp"
+        android:layout_marginStart="145dp"
         android:layout_marginTop="312dp"
         android:background="@drawable/menu_button_background"
         android:text="Join A Carpool"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -205,6 +218,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Out"
+        style="@style/Widget.App.Button"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"

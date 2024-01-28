@@ -2,9 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="words">#6550a0</color>
+    <color name="words">#1E528B</color>
     <color name="orange">#FE6900</color>
     <color name="showInfoBackground">#d4e09b</color>
+    <color name="myButtonColor">#1E528B</color>
 
 
 

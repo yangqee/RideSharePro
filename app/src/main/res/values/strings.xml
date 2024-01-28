@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RideSharePro</string>
+    <string name="app_name">Carpool Buddy</string>
     <string name="btngooglelogin">btnGoogleLogin</string>
     <!--    <string name="default_web_client_id">1006669630842-ko44dqbrkmfl82eo6a8k4hg3pqlk21ps.apps.googleusercontent.com</string>-->
     <string name="default_web_client_id">1:1006669630842:android:ddecbb0b2561b7c1c9dac3</string>
