@@ -43,28 +43,7 @@ public class displayFriend extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         friendID = getIntent().getStringExtra("cleanName");
-//
-//        try {
-//            db.collection("users").document(friendID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                @Override
-//                public void onComplete(@androidx.annotation.NonNull Task<DocumentSnapshot> task) {
-//                    DocumentSnapshot snapshot = task.getResult();
-//                    User x = snapshot.toObject(User.class);
-//                    friendName.setText(x.getName()+ " user's rides:");
-//                    ArrayList<Vehicle> allFriendRides = x.getUserRides();
-//                    if(allFriendRides != null){
-//                        CISVehicleAdapter display = new CISVehicleAdapter(allFriendRides);
-//                        displayFriendRides.setAdapter(display);
-//                        displayFriendRides.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-//                    }else {
-//                        friendName.setText(x.getName()+ " does not have any rides");
-//                    }
-//
-//                }
-//            });
-//        }catch (Exception exception){
-//            System.out.println(exception);
-//        }
+
         try {
             db.collection("users").whereEqualTo("name", friendID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {

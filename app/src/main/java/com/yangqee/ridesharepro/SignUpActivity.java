@@ -58,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent i = new Intent(SignUpActivity.this,MenuActivity.class);
+                Intent i = new Intent(SignUpActivity.this,MainActivity.class);
                 startActivity(i);
 
             }

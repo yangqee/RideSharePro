@@ -21,6 +21,10 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".displayFriend"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".UserRidesInfo"
             android:exported="true">
 
