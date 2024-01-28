@@ -34,7 +34,7 @@ public class myRideAdapter extends RecyclerView.Adapter<myRideHolder>{
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         holder.vehicleModel.setText(allMyRides.get(position).getBrand());
-        holder.owner.setText(allMyRides.get(position).getOwner() + "\r\n" + "Owner: " + allMyRides.get(position).getId());
+        holder.owner.setText("Owner: " + allMyRides.get(position).getOwner());
         holder.plate.setText(allMyRides.get(position).getLicensePlate());
         holder.price.setText(String.valueOf(allMyRides.get(position).getPrice()));
 
