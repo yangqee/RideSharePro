@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.yangqee.ridesharepro"
+    namespace = "com.jack.ridesharepro"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.yangqee.ridesharepro"
+        applicationId = "com.jack.ridesharepro"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
