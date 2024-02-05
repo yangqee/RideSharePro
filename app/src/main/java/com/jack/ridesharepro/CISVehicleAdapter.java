@@ -39,14 +39,11 @@ public class CISVehicleAdapter extends RecyclerView.Adapter<CISVehicleViewHolder
     @Override
     public void onBindViewHolder(@NonNull CISVehicleViewHolder holder, int position) {
         int lastPosition = holder.getAdapterPosition();
-        if (allVehicles.get(lastPosition).isType()){
-            holder.EVG.setText("EV");
-        }else {
-            holder.EVG.setText("Gas Car");
-        }
+
+        holder.vehicleType.setText(allVehicles.get(lastPosition).getType());
         int seatsAvailable = allVehicles.get(position).getSeatsAvailable();
         holder.vehicleModel.setText(allVehicles.get(position).getBrand());
-        holder.plate.setText("License plate: " + allVehicles.get(position).getLicensePlate());
+        holder.plate.setText( allVehicles.get(position).getType());
         holder.price.setText("Price per seat: "+String.valueOf(allVehicles.get(position).getPrice()));
         holder.seatsRemaining.setText(seatsAvailable + " seats remaining");
         holder.bookRide.setOnClickListener(new View.OnClickListener() {

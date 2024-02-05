@@ -16,8 +16,9 @@
         android:hint="Price Per Person"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fuel" />
+        app:layout_constraintTop_toBottomOf="@id/vehicleTypeSpinner" />
 
     <Button
         android:id="@+id/AddVehicle"
@@ -59,16 +60,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/licensePlateNumber" />
 
-    <EditText
-        android:id="@+id/fuel"
-        style="@style/EditTextStyle"
-        android:layout_marginTop="20dp"
-
-        android:hint="EV or Gas"
+    <Spinner
+        android:id="@+id/vehicleTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:textColor="@color/words"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seatsAvailable" />
-
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seatsAvailable"
+        android:entries="@array/vehicle_types" />
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -76,6 +78,7 @@
         android:layout_marginTop="128dp"
         android:text="@string/add_vehicle"
         android:textSize="30sp"
+        android:textColor="@color/words"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"

@@ -39,6 +39,8 @@
             android:layout_marginEnd="256dp"
             android:layout_marginBottom="27dp"
             android:text="lisence"
+            android:textColor="@color/words"
+
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +54,8 @@
             android:layout_marginStart="183dp"
             android:layout_marginTop="91dp"
             android:layout_marginEnd="26dp"
+            android:textColor="@color/words"
+
             android:layout_marginBottom="27dp"
             android:text="Qtd Remaining: "
             android:textSize="12sp"
@@ -84,6 +88,8 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:text="My Vehicle"
+            android:textColor="@color/words"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

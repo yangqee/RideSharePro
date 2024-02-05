@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.jack.ridesharepro.BaseClasses.User;
@@ -27,13 +28,11 @@ public class AddVehicleActivity extends AppCompatActivity {
     private Button addVeh;
     private EditText plate;
     private EditText brand;
-    private EditText eg;
     private EditText numSeats;
     private EditText price;
     private Button back;
     private String name;
 
-    private int mileage;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
@@ -42,13 +41,12 @@ public class AddVehicleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vehicle);
 
-        addVeh = (Button) this.findViewById(R.id.AddVehicle);
-        plate = (EditText) this.findViewById(R.id.licensePlateNumber);
-        eg = (EditText) this.findViewById(R.id.fuel);
-        brand = (EditText) this.findViewById(R.id.brandName);
-        numSeats = (EditText) this.findViewById(R.id.seatsAvailable);
-        price = this.findViewById(R.id.priceOfRide);
-        back = this.findViewById(R.id.back);
+        addVeh = findViewById(R.id.AddVehicle);
+        plate = findViewById(R.id.licensePlateNumber);
+        brand = findViewById(R.id.brandName);
+        numSeats = findViewById(R.id.seatsAvailable);
+        price = findViewById(R.id.priceOfRide);
+        back = findViewById(R.id.back);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -61,19 +59,10 @@ public class AddVehicleActivity extends AppCompatActivity {
             }
         });
 
-//        if (user != null) {
-//            // Name, email address, and profile photo Url
-//            name = user.getDisplayName();
-//            String email = user.getEmail();
-//
-//        }
-
-
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent i = new Intent(AddVehicleActivity.this,MenuActivity.class);
+                Intent i = new Intent(AddVehicleActivity.this, MenuActivity.class);
                 startActivity(i);
-
             }
         });
 
@@ -82,92 +71,61 @@ public class AddVehicleActivity extends AppCompatActivity {
                 plate.getText().clear();
             }
         });
-        eg.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                eg.getText().clear();
-            }
-        });
+
         brand.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 brand.getText().clear();
             }
         });
+
         addVeh.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String carPlate = plate.getText().toString();
                 String model = brand.getText().toString();
-                double priceR = Double.parseDouble(price.getText().toString());
                 int numberOfSeats = Integer.parseInt(numSeats.getText().toString());
+                double priceR = Double.parseDouble(price.getText().toString());
                 System.out.println(name);
+
+                // 获取所选的车辆类型
+                Spinner vehicleTypeSpinner = findViewById(R.id.vehicleTypeSpinner);
+                String vehicleType = vehicleTypeSpinner.getSelectedItem().toString();
+
                 try {
-                    if(eg.getText().toString().equalsIgnoreCase("EV")){
-                        Vehicle xp = new Vehicle(carPlate,model,numberOfSeats,priceR,true,name, mAuth.getUid(),0);
-                        ArrayList<Vehicle> uCar = new ArrayList<>();
-                        uCar.add(xp);
-                        db.collection("users").document(mAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@androidx.annotation.NonNull Task<DocumentSnapshot> task) {
-                                DocumentSnapshot snapshot = task.getResult();
-                                User x = snapshot.toObject(User.class);
-                                assert x != null;
-                                double lat = x.getLat();
-                                double lon = x.getLon();
-                                int mileage = (int) Math.ceil(distance(lat, lon));
-                                ArrayList<Vehicle> vehicles = new ArrayList<>();
-                                Vehicle xp = new Vehicle(carPlate,model,numberOfSeats,priceR,false,name, mAuth.getUid(),mileage*2);
-                                vehicles.add(xp);
-                                x.setUserCars(vehicles);
-                                db.collection("users").document(mAuth.getUid()).set(x);
-                                db.collection("Vehicles").document(carPlate).set(xp);
+                    Vehicle xp = new Vehicle(carPlate, model, numberOfSeats, priceR, vehicleType, name, mAuth.getUid(), 0);
+                    ArrayList<Vehicle> uCar = new ArrayList<>();
+                    uCar.add(xp);
+                    db.collection("users").document(mAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            DocumentSnapshot snapshot = task.getResult();
+                            User x = snapshot.toObject(User.class);
+                            assert x != null;
+                            double lat = x.getLat();
+                            double lon = x.getLon();
+                            int mileage = (int) Math.ceil(distance(lat, lon));
+                            ArrayList<Vehicle> vehicles = new ArrayList<>();
+                            Vehicle xp = new Vehicle(carPlate, model, numberOfSeats, priceR, vehicleType, name, mAuth.getUid(), mileage * 2);
+                            vehicles.add(xp);
+                            x.setUserCars(vehicles);
+                            db.collection("users").document(mAuth.getUid()).set(x);
+                            db.collection("Vehicles").document(carPlate).set(xp);
 
-                            }
-                        });
-                        Intent i = new Intent(AddVehicleActivity.this,MenuActivity.class);
-                        startActivity(i);
+                        }
+                    });
+                    Intent i = new Intent(AddVehicleActivity.this, MenuActivity.class);
+                    startActivity(i);
 
-                    } else if (eg.getText().toString().equalsIgnoreCase("Gas")) {
-
-                        db.collection("users").document(mAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@androidx.annotation.NonNull Task<DocumentSnapshot> task) {
-                                DocumentSnapshot snapshot = task.getResult();
-                                User x = snapshot.toObject(User.class);
-                                assert x != null;
-                                double lat = x.getLat();
-                                double lon = x.getLon();
-                                int mileage = (int) Math.ceil(distance(lat, lon));
-                                ArrayList<Vehicle> vehicles = new ArrayList<>();
-                                Vehicle xp = new Vehicle(carPlate,model,numberOfSeats,priceR,false,name, mAuth.getUid(),mileage);
-                                db.collection("Vehicles").document(xp.getLicensePlate()).set(xp);
-                                vehicles.add(xp);
-                                x.setUserCars(vehicles);
-                                db.collection("users").document(mAuth.getUid()).set(x);
-
-
-                            }
-                        });
-                        Intent i = new Intent(AddVehicleActivity.this,MenuActivity.class);
-                        startActivity(i);
-                    }else {
-                        Toast.makeText(AddVehicleActivity.this, "Please fill in required parameters", Toast.LENGTH_SHORT).show();
-                    }
-                }catch (Exception err){
+                } catch (Exception err) {
                     Toast.makeText(AddVehicleActivity.this, "Please fill in required parameters", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
-
-
-
-
     }
+
     public static double distance(double lat1, double lon1) {
         final int R = 6371; // Radius of the earth
-        double lat2 =22.283709894144884;
-        double lon2 =114.19800870671365;
+        double lat2 = 22.283709894144884;
+        double lon2 = 114.19800870671365;
 
         double latDistance = Math.toRadians(lat2 - lat1);
         double lonDistance = Math.toRadians(lon2 - lon1);

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CISVehicleViewHolder extends RecyclerView.ViewHolder {
     protected TextView vehicleModel;
-    protected TextView EVG;
+    protected TextView vehicleType;
     protected TextView price;
     protected TextView plate;
     protected Button bookRide;
@@ -22,7 +22,7 @@ public class CISVehicleViewHolder extends RecyclerView.ViewHolder {
         price = itemView.findViewById(R.id.price);
         bookRide = itemView.findViewById(R.id.bookSeat);
         seatsRemaining = itemView.findViewById(R.id.avaliSeats);
-        EVG = itemView.findViewById(R.id.EVG);
+        vehicleType = itemView.findViewById(R.id.EVG);
 
 
     }

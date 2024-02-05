@@ -9,7 +9,7 @@ public class Vehicle {
     private String brand;
     private int seatsAvailable;
     private double price;
-    private boolean type;
+    private String type;
     private String owner;
     private boolean open;
     private String id;
@@ -41,7 +41,7 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(String licensePlate, String brand, int seatsAvailable, double price, boolean type, String owner,String id,int mileage) {
+    public Vehicle(String licensePlate, String brand, int seatsAvailable, double price, String type, String owner,String id,int mileage) {
         this.licensePlate = licensePlate;
         this.brand = brand;
         this.seatsAvailable = seatsAvailable;
@@ -51,30 +51,6 @@ public class Vehicle {
         open = true;
         this.id = id;
         this.mileage = mileage;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public boolean isType() {
-        return type;
-    }
-
-    public void setType(boolean type) {
-        this.type = type;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public String getLicensePlate() {
@@ -93,7 +69,6 @@ public class Vehicle {
         this.brand = brand;
     }
 
-
     public int getSeatsAvailable() {
         return seatsAvailable;
     }
@@ -102,6 +77,27 @@ public class Vehicle {
         this.seatsAvailable = seatsAvailable;
     }
 
+    public double getPrice() {
+        return price;
+    }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 }
